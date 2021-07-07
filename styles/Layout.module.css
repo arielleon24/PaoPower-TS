@@ -1,0 +1,55 @@
+.header{
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #7b5dbe;
+}
+
+.logo {
+  height: 70px;
+  margin-left: 0.5rem;
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #222222;
+}
+
+.navmenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navitem {
+  margin-left: 5rem;
+}
+
+.navlink{
+  font-family: 'Merriweather Sans';
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+}
+
+.navlink:hover{
+  color: #482ff7;
+}
+
+.navlogo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}

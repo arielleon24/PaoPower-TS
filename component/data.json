@@ -1,0 +1,29 @@
+{
+    "eng": {
+    "site": "Register with PaoPower",
+    "nav": "Welcome to PaoPower", 
+    "welcome": "Welcome to PaoPower's registration form",
+    "form": "Please fill the form to create an account",
+    "user": "Username:",
+    "enterUser": "Enter Username", 
+    "email": "Email:",
+    "enterEmail": "Enter Email", 
+    "password": "Password", 
+    "enterPassword": "Enter Password",
+    "save": "Register"
+  },
+
+  "fr": {
+    "site": "S'inscrire a PaoPower",
+    "nav": "Bienvenu a PaoPower", 
+    "welcome": "Bienvenue au formulaire d'enregistrement PaoPower",
+    "form": "Veuillez remplir le formulaire pour créer un compte",
+    "user": "Nom d'utilisateur:",
+    "enterUser": "Entrer Nom d'utilisateur", 
+    "email": "Courriel:",
+    "enterEmail": "Entrer Courriel", 
+    "password": "Mot de passe", 
+    "enterPassword": "Entrer Mot de Passe",
+    "save": "S'inscrire"
+  }
+}
