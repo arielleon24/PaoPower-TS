@@ -40,25 +40,17 @@ export default function Form(props:any) {
         // console.log("/API/users", users)
       }
       
-      // function onSubmitForm(values: any){
-      //   // @ts-ignores ---
-      //   if(document.getElementById('username').value && document.getElementById('email').value && document.getElementById('password').value) {
-      //     let ID = createId()
-      //     // @ts-ignores ---
-      //     createUser(document.getElementById('username').value, document.getElementById('email').value, document.getElementById('password').value)
-      //     setReg(true)
-      //   }
-      // }
+      const onSubmit = () => console.log(data)
 
   return (
     <div className={styles.container}>
 
-    <main className={styles.main}>
+    <main className={styles.mainForm}>
       <h1 className={styles.title}>
       {eng ? data.eng.welcome : data.fr.welcome}
       </h1>
 
-      <form method='post' action='/api/users' className={styles.form}>
+      <form method='post' onSubmit={handleSubmit(onSubmit)} action="/api/users" className={styles.form}>
         <div>
           <p className={styles.descriptionForm}>{eng ? data.eng.form : data.fr.form}</p>
 
@@ -66,31 +58,35 @@ export default function Form(props:any) {
           <input 
             type="text" 
             placeholder={eng ? data.eng.enterUser : data.fr.enterUser} 
-            name="username" 
+            // name="username" 
             id="username" 
+            {...register('data.username')}
             required />
 
           <label><b className={styles.description}>{eng ? data.eng.email : data.fr.email}</b></label>
           <input 
             type="email" 
             placeholder={eng ? data.eng.enterEmail : data.fr.enterEmail} 
-            name="email" 
+            // name="email" 
             id="email" 
+            {...register('data.email')}
             required />
 
           <label><b className={styles.description}>{eng ? data.eng.password : data.fr.password}</b></label>
           <input 
             type="password" 
             placeholder={eng ? data.eng.enterPassword : data.fr.enterPassword} 
-            name="password" 
+            // name="password"
             id="password" 
+            {...register('data.password')}
             required />
 
           <button type="submit" onClick={(event) => {
             event.preventDefault
             // @ts-ignores ---
             if(document.getElementById('username').value && document.getElementById('email').value && document.getElementById('password').value) {
-              createUser()
+              // createUser()
+              console.log("register", register)
               setReg(true)
           }}} className={styles.registerbtn}><h1>{eng ? data.eng.save : data.fr.save}</h1></button>
 

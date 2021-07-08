@@ -16,6 +16,10 @@ html,body, body * {
  font-size: 50%;
 }
 
+body {
+  background-color: whitesmoke;
+}
+
 li {
   list-style: none;
 }
