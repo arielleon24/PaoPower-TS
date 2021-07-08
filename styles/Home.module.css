@@ -116,6 +116,13 @@
   font-size: 3rem;
 }
 
+.titleForm {
+  font-family: 'Merriweather Sans';
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3.5rem;
+}
+
 .title2 {
   margin: 0;
   line-height: 1.15;

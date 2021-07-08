@@ -46,7 +46,7 @@ export default function Form(props:any) {
     <div className={styles.container}>
 
     <main className={styles.mainForm}>
-      <h1 className={styles.title}>
+      <h1 className={styles.titleForm}>
       {eng ? data.eng.welcome : data.fr.welcome}
       </h1>
 
