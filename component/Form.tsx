@@ -72,7 +72,7 @@ export default function Form(props:any) {
 
           <label><b className={styles.description}>{eng ? data.eng.email : data.fr.email}</b></label>
           <input 
-            type="text" 
+            type="email" 
             placeholder={eng ? data.eng.enterEmail : data.fr.enterEmail} 
             name="email" 
             id="email" 
@@ -80,7 +80,7 @@ export default function Form(props:any) {
 
           <label><b className={styles.description}>{eng ? data.eng.password : data.fr.password}</b></label>
           <input 
-            type="text" 
+            type="password" 
             placeholder={eng ? data.eng.enterPassword : data.fr.enterPassword} 
             name="password" 
             id="password" 
