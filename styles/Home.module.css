@@ -42,11 +42,12 @@
 
 .registerbtn:hover {
   background-color: #7b5dbe;
-  border-radius: 10px;
+  transform: scale(1.1);
+  border-radius: 5px;
 }
 
 .registerbtn:hover h1 {
-  color: #0070f3;
+  color: orange;
 }
 
 .form div label {
@@ -62,7 +63,6 @@
 }
 
 .main {
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -105,6 +105,12 @@
   font-size: 3rem;
 }
 
+.title2 {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3rem;
+}
+
 .title,
 .description {
   text-align: center;
@@ -113,6 +119,12 @@
 .description {
   line-height: 1.5;
   font-size: 2rem;
+}
+
+.descriptionForm {
+  margin-top: -25px;
+  line-height: 1.5;
+  font-size: 2.8rem;
 }
 
 .code {
