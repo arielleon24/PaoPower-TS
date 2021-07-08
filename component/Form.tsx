@@ -2,7 +2,6 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import data from '../component/data.json'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
 import axios from 'axios';
 import { users } from '../data'
 

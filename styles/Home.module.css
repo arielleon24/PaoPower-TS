@@ -1,4 +1,6 @@
 .container {
+  background-image: url('../public/background.png');
+  background-size: contain;
   min-height: 90vh;
   /* padding: 0 0.5rem; */
   display: flex;
