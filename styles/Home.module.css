@@ -1,6 +1,4 @@
 .container {
-  background-image: url('../public/background.png');
-  background-size: 60vw;
   min-height: 90vh;
   /* padding: 0 0.5rem; */
   display: flex;
@@ -10,9 +8,16 @@
   height: 80%;
 }
 
+.bg {
+  background-image: url('../public/background.png');
+  /* background-repeat: no-repeat; */
+  width: 100vw;
+  background-size: 60%;
+}
+
 .form {
+  width: 100%;
   padding: 50px;
-  width: 900px;
 }
 
 .form div {
@@ -76,7 +81,8 @@
   border: lightgrey 1px solid;
   background-color: white;
   border-radius: 25px;
-  flex: 0.8;
+  flex: 0.7;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

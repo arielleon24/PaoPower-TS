@@ -17,43 +17,50 @@ export default function Form(props:any) {
   const [username, setUsername] = useState('')
   const [inputEmail, setEmail] = useState('')
   const [inputPassword, setPassword] = useState('')
-  // const [userDb, setUserDb] = useState([])
   const [test, setTest] = useState('')
 
   axios.get('/api/users').then(res => {
     console.log("API.GET DATA:", res.data)
-    // setUserDb([res.data])
   })
 
   const idGenerator =()=> {
-    const num1 = Math.floor(Math.random() * 9 + 1)
-    const num2 = Math.floor(Math.random() * 9 + 1)
 
-    return `user${num1}${num2}`
+    return `test`
   }
       
-      const createUser = async () => {
+      const createUser = () => {
         console.log("hello")
         console.log(username, inputEmail, inputPassword)
-        let res = axios.post('/api/users', {
+        // let res = axios.post('/api/users', {
+        //   id:idGenerator(), 
+        //   username: username,
+        //   email: inputEmail,
+        //   password: inputPassword
+        // }).then(res => {console.log("res",res)})
+
+        let user = {
           id:idGenerator(), 
           username: username,
           email: inputEmail,
           password: inputPassword
-        }).then(res => {console.log("res",res)})
-        
+        }
+
+        return user
+
       }
       
 
   return (
-    <div className={styles.container}>
-
-    <main className={styles.mainForm}>
+    <div className={`${styles.container} ${styles.bg}`}>
+    <main className={`${styles.mainForm} `}>
       <h1 className={styles.titleForm}>
       {eng ? data.eng.welcome : data.fr.welcome}
       </h1>
 
-      <form className={styles.form}>
+      <form onSubmit={((e) => {
+        e.preventDefault
+
+        })} className={styles.form}>
         <div>
           <p className={styles.descriptionForm}>{eng ? data.eng.form : data.fr.form}</p>
 
@@ -99,6 +106,6 @@ export default function Form(props:any) {
         </div>
       </form>
     </main>
-  </div>
+    </div>
   )
 }
