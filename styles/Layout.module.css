@@ -45,7 +45,8 @@
 }
 
 .navlink:hover{
-  color: #482ff7;
+  color: orange;
+  transform: scale(1.2) !important;
 }
 
 .navlogo {

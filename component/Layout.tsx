@@ -23,16 +23,16 @@ export default function Layout(props:any) {
           <img className={styles.logo} src='https://api.paopower.net/settings/tfxiz-logo-white.png'/>
           <ul className={styles.navmenu}>
 
-            <li className={styles.navitem}>
+            {/* <li className={styles.navitem}>
               <a className={styles.navlink}>Home</a>
-            </li>
+            </li> */}
 
             {/* <li className={styles.navitem}>
               <a className={styles.navlink}>Models</a>
             </li> */}
 
             <li className={styles.navitem}>
-              <a className={styles.navlink}>Contact</a>
+              <a href='/api/users' className={styles.navlink}>{eng? "registered users": "Utilisateurs enregistré"}</a>
             </li>
 
             {/* <li className={styles.navitem}>

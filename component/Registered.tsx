@@ -9,11 +9,10 @@ export default function Form(props:any) {
 
   return (
     <div className={styles.container}>
-              <main className={styles.main}>
+              <main className={styles.mainForm}>
                 <h1 className={styles.title2}>
                 {eng ? data.eng.thanks : data.fr.thanks}
                 </h1>
-
                 <button type="submit" onClick={()=>{setReg(false)}} className={styles.registerbtn}><h1>{eng ? data.eng.home : data.fr.home}</h1></button>
 
               </main>

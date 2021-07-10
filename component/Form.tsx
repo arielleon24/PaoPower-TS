@@ -1,77 +1,114 @@
-import Image from 'next/image'
+import React, { useState } from 'react';
 import styles from '../styles/Home.module.css'
 import data from '../component/data.json'
+import { useForm } from 'react-hook-form'
+import axios from 'axios';
+import { users } from '../data'
 
+const api = axios.create({
+  baseURL: `http://localhost:3000/api/users`
+})
 export default function Form(props:any) {
-
   const eng = props.eng
   const setReg = props.setReg
 
-  const userDb = {
-    user1 : {
-      username: "mrFirst", 
-      email: "DaOne@gmail.com",
-      password: "11111"
-    }
-  }
+  const [username, setUsername] = useState('')
+  const [inputEmail, setEmail] = useState('')
+  const [inputPassword, setPassword] = useState('')
 
-  const createId = () => {
-    let count = 0
-    for(let user in userDb) {
-      count += 1
-    }
-    count += 1
-    console.log(count)
-    console.log(userDb)
-    return `user${count}`
-  }
+  const localDB= []
 
-  const createUser = (username: string, email: string, password: string) => {
-    let id = createId()
-    // @ts-ignores ---
-    userDb[id] = {
-      username, 
-      email, 
-      password
-    }
-  }
+  api.get('/').then(res => {
+    console.log("API.GET DATA:", res.data)
+    localDB.push(res.data)
+  })
 
+
+  const idGenerator =()=> {
+    const num = localDB.length + 1
+    return `user${num}`
+  }
+      
+      const createUser = () => {
+        // let res = axios.post('/api/users', {
+        //   id:idGenerator(), 
+        //   username: username,
+        //   email: inputEmail,
+        //   password: inputPassword
+        // }).then(res => {console.log("res",res)})
+
+        // let user = {
+        //   id:idGenerator(), 
+        //   username: username,
+        //   email: inputEmail,
+        //   password: inputPassword
+        // }
+        // console.log("newUserObject", user)
+
+        //---------POST REQUESTS SHOWS ON NETWORK TAB BUT IT DOESN'T ADD THE DATA TO THE ENDPOINT------------//
+        api.post('/', {
+          id:idGenerator(), 
+          username: username,
+          email: inputEmail,
+          password: inputPassword
+        }).then(res => console.log("AFTER POST RESPONSE", res))
+        // return user
+      }
+      
 
   return (
-    <div className={styles.container}>
-
-    <main className={styles.main}>
-      <h1 className={styles.title}>
+    <div className={`${styles.container} ${styles.bg}`}>
+    <main className={`${styles.mainForm} `}>
+      <h1 className={styles.titleForm}>
       {eng ? data.eng.welcome : data.fr.welcome}
       </h1>
 
-      <form className={styles.form}>
+      <form onSubmit={((event) => {
+        event.preventDefault
+        createUser()
+        setReg(true)
+        })} className={styles.form}>
         <div>
-          <p className={styles.description}>{eng ? data.eng.form : data.fr.form}</p>
+          <p className={styles.descriptionForm}>{eng ? data.eng.form : data.fr.form}</p>
 
           <label><b className={styles.description}>{eng ? data.eng.user : data.fr.user}</b></label>
-          <input type="text" placeholder={eng ? data.eng.enterUser : data.fr.enterUser} name="username" id="username" required />
+          <input 
+            type="text" 
+            placeholder={eng ? data.eng.enterUser : data.fr.enterUser} 
+            id="username" 
+            value={username}
+            onChange={event=>{setUsername(event.target.value)}}
+            required
+            />
 
           <label><b className={styles.description}>{eng ? data.eng.email : data.fr.email}</b></label>
-          <input type="text" placeholder={eng ? data.eng.enterEmail : data.fr.enterEmail} name="email" id="email" required />
+          <input 
+            type="email" 
+            placeholder={eng ? data.eng.enterEmail : data.fr.enterEmail} 
+            id="email" 
+            value={inputEmail}
+            onChange={event=>{setEmail(event.target.value)}}
+            required
+            />
 
           <label><b className={styles.description}>{eng ? data.eng.password : data.fr.password}</b></label>
-          <input type="text" placeholder={eng ? data.eng.enterPassword : data.fr.enterPassword} name="password" id="password" required />
+          <input 
+            type="password" 
+            placeholder={eng ? data.eng.enterPassword : data.fr.enterPassword} 
+            id="password" 
+            value={inputPassword}
+            onChange={event=>{setPassword(event.target.value)}}
+            required
+            />
 
-          <button type="submit" onClick={(ev)=>{
-            ev.preventDefault();
-            // @ts-ignores ---
-            if(document.getElementById('username').value && document.getElementById('email').value && document.getElementById('password').value) {
-              // @ts-ignores ---
-              createUser(document.getElementById('username').value, document.getElementById('email').value, document.getElementById('password').value)
-              setReg(true)
-              console.log(userDb)
-            }
-            }} className={styles.registerbtn}><h1>{eng ? data.eng.save : data.fr.save}</h1></button>
+
+          <button type="submit" onClick={() => {
+            console.log("this is userInput:",username, inputEmail, inputPassword)
+          }} className={styles.registerbtn}><h1>{eng ? data.eng.save : data.fr.save}</h1></button>
 
         </div>
       </form>
     </main>
-  </div>
+    </div>
   )
 }
