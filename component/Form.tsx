@@ -12,25 +12,24 @@ export default function Form(props:any) {
   const eng = props.eng
   const setReg = props.setReg
 
-  const { register } =useForm()
-
   const [username, setUsername] = useState('')
   const [inputEmail, setEmail] = useState('')
   const [inputPassword, setPassword] = useState('')
-  const [test, setTest] = useState('')
 
-  axios.get('/api/users').then(res => {
+  const localDB= []
+
+  api.get('/').then(res => {
     console.log("API.GET DATA:", res.data)
+    localDB.push(res.data)
   })
 
-  const idGenerator =()=> {
 
-    return `test`
+  const idGenerator =()=> {
+    const num = localDB.length + 1
+    return `user${num}`
   }
       
       const createUser = () => {
-        console.log("hello")
-        console.log(username, inputEmail, inputPassword)
         // let res = axios.post('/api/users', {
         //   id:idGenerator(), 
         //   username: username,
@@ -38,15 +37,22 @@ export default function Form(props:any) {
         //   password: inputPassword
         // }).then(res => {console.log("res",res)})
 
-        let user = {
+        // let user = {
+        //   id:idGenerator(), 
+        //   username: username,
+        //   email: inputEmail,
+        //   password: inputPassword
+        // }
+        // console.log("newUserObject", user)
+
+        //---------POST REQUESTS SHOWS ON NETWORK TAB BUT IT DOESN'T ADD THE DATA TO THE ENDPOINT------------//
+        api.post('/', {
           id:idGenerator(), 
           username: username,
           email: inputEmail,
           password: inputPassword
-        }
-
-        return user
-
+        }).then(res => console.log("AFTER POST RESPONSE", res))
+        // return user
       }
       
 
@@ -57,9 +63,10 @@ export default function Form(props:any) {
       {eng ? data.eng.welcome : data.fr.welcome}
       </h1>
 
-      <form onSubmit={((e) => {
-        e.preventDefault
-
+      <form onSubmit={((event) => {
+        event.preventDefault
+        createUser()
+        setReg(true)
         })} className={styles.form}>
         <div>
           <p className={styles.descriptionForm}>{eng ? data.eng.form : data.fr.form}</p>
@@ -95,12 +102,8 @@ export default function Form(props:any) {
             />
 
 
-          <button type="submit" onClick={(event) => {
-            event.preventDefault()
-            console.log(inputEmail, inputPassword)
-            createUser()
-            // @ts-ignores ---
-              setReg(true)
+          <button type="submit" onClick={() => {
+            console.log("this is userInput:",username, inputEmail, inputPassword)
           }} className={styles.registerbtn}><h1>{eng ? data.eng.save : data.fr.save}</h1></button>
 
         </div>
