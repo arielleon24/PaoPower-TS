@@ -32,7 +32,7 @@ export default function Layout(props:any) {
             </li> */}
 
             <li className={styles.navitem}>
-              <a href='/api/users' className={styles.navlink}>{eng? "registered users": "Utilisateurs enregistré"}</a>
+              <a className={styles.navlink}>{eng? "registered users": "Utilisateurs enregistrés"}</a>
             </li>
 
             {/* <li className={styles.navitem}>
